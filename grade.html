@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Grade</title>
+</head>
+<body>
+
+<h2>Enter Student Score:</h2>
+
+<form method="POST">
+    <input type="number" name="score" required>
+    <br><br>
+    <input type="submit" name="grade" value="Calculate Grade">
+</form>
+
+<?php
+if (isset($_POST['grade'])) {
+    $score = $_POST['score'];
+
+    if ($score >= 80) {
+        $grade = "Mastery";
+    } elseif ($score >= 60) {
+        $grade = "Proficient";
+    } elseif ($score >= 50) {
+        $grade = "Competent";
+    } else {
+        $grade = "Below Standard";
+    }
+
+    echo "<h3>Grade:</h3>";
+    echo "<strong>$grade</strong>";
+}
+?>
+
+<br><br>
+<a href="index.php">Go to Home Page</a>
+
+</body>
+</html>

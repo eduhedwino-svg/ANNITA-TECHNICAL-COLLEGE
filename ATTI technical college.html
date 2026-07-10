@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annita Technical Training Institute — Kenol Town,Silvercore plaza,room no 23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red-deep:#0d4907;
+    --red:#8f0a0a;
+    --red-bright:#E23F3F;
+    --gold:#E8A33D;
+    --cream:#FBF6EE;
+    --cream-2:#F3E9DA;
+    --ink:#241512;
+    --ink-soft:#5A423E;
+    --green:#2F6B4F;
+    --white:#FFFDF9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--white);
+    border-bottom:3px solid var(--red);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1140px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{
+    width:44px;height:44px;border-radius:50%;
+    overflow:hidden;flex-shrink:0;
+    border:2px solid var(--red);
+  }
+  .brand-mark img{width:100%;height:100%;object-fit:cover;}
+  .brand-name{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;line-height:1.1;}
+  .brand-name span{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);}
+  nav.links{display:flex;gap:24px;font-size:0.88rem;font-weight:600;}
+  nav.links a{position:relative;padding:4px 0;color:var(--ink-soft);transition:color .2s;white-space:nowrap;}
+  nav.links a:hover{color:var(--red);}
+  .nav-cta{
+    background:var(--red);color:var(--white);padding:10px 20px;border-radius:100px;
+    font-weight:700;font-size:0.85rem;white-space:nowrap;
+  }
+  .burger{display:none;font-size:1.5rem;background:none;border:none;color:var(--red);cursor:pointer;}
+
+  /* ===== CAMPUS CAROUSEL ===== */
+  .carousel{
+    position:relative;height:min(62vh,480px);min-height:320px;
+    overflow:hidden;background:var(--ink);
+  }
+  .carousel-slide{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    opacity:0;transition:opacity 1.2s ease;
+  }
+  .carousel-slide.active{opacity:1;}
+  .carousel-shade{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(122,19,21,0.15) 0%, rgba(36,21,18,0.15) 55%, rgba(36,21,18,0.85) 100%);
+  }
+  .carousel-caption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:34px 24px 30px;color:var(--white);
+    max-width:1140px;margin:0 auto;
+  }
+  .carousel-caption span{
+    display:inline-block;background:var(--red);padding:5px 14px;border-radius:100px;
+    font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;
+  }
+  .carousel-caption h2{color:var(--white);font-size:clamp(1.4rem,3vw,2rem);}
+  .carousel-dots{
+    position:absolute;right:24px;bottom:26px;display:flex;gap:8px;
+  }
+  .carousel-dots .dot{
+    width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.4);
+    cursor:pointer;transition:all .25s;
+  }
+  .carousel-dots .dot.active{background:var(--gold);width:22px;border-radius:100px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 85% -10%, rgba(232,163,61,0.35), transparent 55%),
+      linear-gradient(180deg, var(--red-deep) 0%, var(--red) 55%, var(--red) 100%);
+    color:var(--white);
+    padding:76px 24px 110px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:70px;
+    background:var(--cream);
+    clip-path:polygon(0 60%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .hero-inner{max-width:1140px;margin:0 auto;position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.3);
+    padding:6px 16px;border-radius:100px;font-size:0.78rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.1em;margin-bottom:26px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .hero h1{
+    font-size:clamp(2.3rem,5.5vw,4rem);
+    line-height:1.04;
+    max-width:820px;
+    margin-bottom:20px;
+  }
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--gold);}
+  .hero p.lead{max-width:560px;font-size:1.1rem;color:rgba(255,255,255,0.88);margin-bottom:34px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:100px;font-weight:700;font-size:0.95rem;
+    transition:transform .2s ease, box-shadow .2s ease;cursor:pointer;border:none;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-gold{background:var(--gold);color:var(--red-deep);box-shadow:0 8px 24px rgba(232,163,61,0.35);}
+  .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.55);}
+  .btn-outline:hover{background:rgba(255,255,255,0.1);}
+
+  .hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:1.9rem;color:var(--gold);}
+  .stat span{font-size:0.78rem;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.08em;}
+
+  /* ===== SASH / SIGNATURE ELEMENT ===== */
+  .sash-wrap{position:relative;max-width:1140px;margin:-52px auto 40px;padding:0 24px;z-index:5;}
+  .sash{
+    background:var(--ink);
+    color:var(--white);
+    border-radius:14px;
+    padding:18px 28px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    box-shadow:0 20px 45px rgba(36,21,18,0.25);
+    position:relative;
+    overflow:hidden;
+  }
+  .sash::before{
+    content:"";position:absolute;top:0;left:0;bottom:0;width:6px;background:var(--gold);
+  }
+  .sash-badge{
+    background:var(--red);color:var(--white);font-size:0.72rem;font-weight:800;
+    padding:6px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:0.08em;
+    white-space:nowrap;
+  }
+  .sash-text{font-size:0.95rem;color:rgba(255,255,255,0.9);flex:1;min-width:200px;}
+  .sash-text strong{color:var(--gold);}
+
+  /* ===== SECTION HEADERS ===== */
+  .section{padding:78px 0;}
+  .section-tag{
+    font-size:0.78rem;font-weight:800;color:var(--red);text-transform:uppercase;
+    letter-spacing:0.14em;margin-bottom:10px;display:block;
+  }
+  .section h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:14px;max-width:640px;}
+  .section p.intro{color:var(--ink-soft);max-width:560px;font-size:1.02rem;margin-bottom:44px;}
+
+  /* ===== WHY DIFFERENT ===== */
+  .why{background:var(--white);}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .why-card{
+    background:var(--cream);
+    border:1px solid var(--cream-2);
+    border-left:4px solid var(--green);
+    padding:22px 24px;border-radius:10px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .why-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(122,19,21,0.08);}
+  .why-card h3{font-size:1.02rem;font-weight:600;font-family:'Inter',sans-serif;margin-bottom:6px;color:var(--red-deep);}
+  .why-card p{font-size:0.92rem;color:var(--ink-soft);}
+
+  .benefits-strip{
+    margin-top:46px;
+    background:linear-gradient(120deg,var(--red-deep),var(--red));
+    border-radius:16px;padding:34px;color:var(--white);
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .benefits-strip h4{font-family:'Inter',sans-serif;grid-column:1/-1;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:-6px;}
+  .benefit{display:flex;gap:10px;font-size:0.9rem;align-items:flex-start;}
+  .benefit .tick{color:var(--gold);font-weight:800;}
+
+  /* ===== COURSES ===== */
+  .courses{background:var(--cream);}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px;}
+  .tab{
+    padding:10px 18px;border-radius:100px;font-size:0.85rem;font-weight:700;
+    background:var(--white);border:1.5px solid var(--cream-2);color:var(--ink-soft);cursor:pointer;
+    transition:all .2s;
+  }
+  .tab.active{background:var(--red);border-color:var(--red);color:var(--white);}
+  .tab:hover:not(.active){border-color:var(--red);color:var(--red);}
+
+  .course-panel{display:none;}
+  .course-panel.active{display:block;animation:fadeIn .35s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .course-table{
+    width:100%;border-collapse:collapse;background:var(--white);
+    border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(122,19,21,0.06);
+  }
+  .course-table tr{border-bottom:1px solid var(--cream-2);}
+  .course-table tr:last-child{border-bottom:none;}
+  .course-table tr:hover{background:var(--cream);}
+  .course-table td{padding:15px 20px;font-size:0.94rem;}
+  .course-table td:first-child{font-weight:600;}
+  .course-table td.dur{color:var(--ink-soft);font-size:0.85rem;}
+  .course-table td.fee{
+    text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--red-deep);
+    white-space:nowrap;
+  }
+
+  .other-fees{
+    margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  }
+  .fee-chip{
+    background:var(--white);border-radius:10px;padding:16px 18px;text-align:center;
+    border:1px dashed var(--gold);
+  }
+  .fee-chip b{display:block;font-family:'JetBrains Mono',monospace;color:var(--red);font-size:1.05rem;margin-top:4px;}
+  .fee-chip span{font-size:0.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.05em;}
+
+  /* ===== COURSE SPOTLIGHT ===== */
+  .spotlight{background:var(--white);}
+  .spotlight-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .spotlight-card{
+    position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;
+    box-shadow:0 16px 34px rgba(122,19,21,0.12);
+  }
+  .spotlight-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .spotlight-card:hover img{transform:scale(1.05);}
+  .spotlight-shade{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, transparent 30%, rgba(36,21,18,0.9) 100%);
+  }
+  .spotlight-info{position:absolute;left:0;right:0;bottom:0;padding:22px;color:var(--white);}
+  .spotlight-info .new-badge{
+    display:inline-block;background:var(--gold);color:var(--red-deep);padding:4px 12px;
+    border-radius:100px;font-size:0.68rem;font-weight:800;text-transform:uppercase;
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .spotlight-info h3{color:var(--white);font-size:1.35rem;margin-bottom:4px;}
+  .spotlight-info p{font-size:0.85rem;color:rgba(255,255,255,0.8);}
+
+  /* ===== GALLERY GRIDS (training / graduates) ===== */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;
+  }
+  .gallery-item{
+    position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;
+    background:var(--cream-2);
+  }
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .gallery-item:hover img{transform:scale(1.07);}
+  .gallery-item .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:12px 14px;color:var(--white);
+    background:linear-gradient(180deg, transparent, rgba(36,21,18,0.88));
+    font-size:0.8rem;font-weight:700;
+  }
+  .gallery-item .cap span{
+    display:block;font-size:0.68rem;font-weight:600;color:var(--gold);
+    text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;
+  }
+  .training{background:var(--cream);}
+  .graduates{background:var(--white);}
+  .graduates .gallery-item::after{
+    content:"🎓";position:absolute;top:10px;right:10px;
+    background:var(--red);width:30px;height:30px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:0.85rem;
+  }
+
+  /* ===== DIRECTOR ===== */
+  .director{background:var(--white);}
+  .director-grid{
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;align-items:center;
+  }
+  .director-photo-wrap{position:relative;}
+  .director-photo{
+    border-radius:20px;overflow:hidden;
+    box-shadow:0 24px 50px rgba(122,19,21,0.18);
+    border:6px solid var(--white);
+    outline:2px solid var(--cream-2);
+  }
+  .director-photo img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;}
+  .director-tag{
+    position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);
+    background:var(--red);color:var(--white);padding:10px 22px;border-radius:100px;
+    font-weight:800;font-size:0.82rem;white-space:nowrap;box-shadow:0 10px 22px rgba(193,39,45,0.35);
+    text-transform:uppercase;letter-spacing:0.06em;
+  }
+  .director-quote-mark{
+    font-family:'Fraunces',serif;font-size:4.5rem;color:var(--gold);line-height:0.6;
+    display:block;margin-bottom:8px;
+  }
+  .director-message p{
+    font-size:1.08rem;color:var(--ink-soft);margin-bottom:16px;line-height:1.75;
+  }
+  .director-message p:first-of-type{color:var(--ink);font-family:'Fraunces',serif;font-size:1.25rem;font-weight:500;font-style:italic;}
+  .director-signoff{margin-top:24px;}
+  .director-signoff b{display:block;font-family:'Fraunces',serif;font-size:1.15rem;color:var(--red-deep);}
+  .director-signoff span{font-size:0.82rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.08em;}
+
+  /* ===== CTA BAND ===== */
+  .cta-band{
+    background:var(--ink);color:var(--white);
+    padding:70px 0;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-band::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 20% 20%, rgba(193,39,45,0.35), transparent 45%),
+               radial-gradient(circle at 80% 80%, rgba(232,163,61,0.25), transparent 45%);
+  }
+  .cta-band-inner{position:relative;z-index:2;}
+  .cta-band h2{color:var(--white);margin-bottom:14px;}
+  .cta-band p{color:rgba(255,255,255,0.7);max-width:480px;margin:0 auto 30px;}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--white);}
+  .contact-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:stretch;}
+  .contact-card{
+    background:linear-gradient(150deg,var(--red-deep),var(--red));
+    color:var(--white);border-radius:18px;padding:40px;position:relative;overflow:hidden;
+  }
+  .contact-card::after{
+    content:"";position:absolute;right:-40px;bottom:-40px;width:180px;height:180px;
+    border-radius:50%;background:rgba(232,163,61,0.25);
+  }
+  .contact-card h3{font-size:1.4rem;margin-bottom:6px;position:relative;}
+  .contact-card .phone{
+    font-family:'Fraunces',serif;font-size:2.1rem;font-weight:700;color:var(--gold);
+    margin:14px 0 20px;position:relative;
+  }
+  .contact-row{display:flex;gap:12px;align-items:center;margin-bottom:14px;position:relative;font-size:0.95rem;}
+  .contact-row .ic{
+    width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;
+  }
+  .visit-card{
+    background:var(--cream);border-radius:18px;padding:40px;border:1px solid var(--cream-2);
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .visit-card h3{margin-bottom:14px;font-size:1.3rem;}
+  .visit-card p{color:var(--ink-soft);margin-bottom:22px;line-height:1.7;}
+  .badge-open{
+    display:inline-flex;align-items:center;gap:8px;background:var(--red);color:var(--white);
+    padding:9px 18px;border-radius:100px;font-weight:800;font-size:0.85rem;width:fit-content;
+    text-transform:uppercase;letter-spacing:0.06em;
+  }
+
+  footer{
+    background:var(--ink);color:rgba(255,255,255,0.55);text-align:center;
+    padding:28px 24px;font-size:0.82rem;
+  }
+  footer strong{color:var(--white);}
+
+  @media (max-width:820px){
+    nav.links{display:none;}
+    .burger{display:block;}
+    .why-grid{grid-template-columns:1fr;}
+    .benefits-strip{grid-template-columns:1fr;}
+    .other-fees{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .director-grid{grid-template-columns:1fr;}
+    .director-photo{max-width:320px;margin:0 auto;}
+    .spotlight-grid{grid-template-columns:1fr;}
+    .hero{padding:56px 20px 130px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark"><img src="images/logo.jpeg" alt="Annita Technical Training Institute logo"></div>
+      <div class="brand-name">Annita <span>Technical Training Institute</span></div>
+    </div>
+    <nav class="links">
+      <a href="#why">HOME</a>
+      <a href="#gallery">College</a>
+      <a href="#courses">Courses</a>
+      <a href="#training">Training</a>
+      <a href="#graduates">Graduates</a>
+      <a href="#director">Director</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+254722866363/+254755336316" class="nav-cta">Call Us Now To Get Enrolled</a>
+  </div>
+</header>
+
+<section class="carousel" id="gallery">
+  <div class="carousel-slide active" style="background-image:url('images/campus-1.jpg')"></div>
+  <div class="carousel-slide" style="background-image:url('images/campus-2.jpg')"></div>
+  <div class="carousel-shade"></div>
+  <div class="carousel-caption">
+    <span>Our College</span>
+    <h2>ATTI Technical College — Kenol Town, Silvercore plaza,first floor room NO 23</h2>
+  </div>
+  <div class="carousel-dots">
+    <span class="dot active" data-i="0"></span>
+    <span class="dot" data-i="1"></span>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span> Admission Open — Kenol Town,Silvercore plaza room NO 23</div>
+    <h1>Learn a skill. <em>Start a business.</em><br>Build a future.</h1>
+    <p class="lead">Annita Technical Training Institute trains you in market-driven courses, then hands you a real business plan, start-up capital, and a loan repayment plan built around your income — not the other way round.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/254722866363" class="btn btn-gold">💬 Chat on WhatsApp</a>
+      <a href="#courses" class="btn btn-outline">View Courses &amp; Fees</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>7</b><span>Departments</span></div>
+      <div class="stat"><b>30+</b><span>Courses on offer</span></div>
+      <div class="stat"><b>Ksh 2,000</b><span>One-time registration</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="sash-wrap">
+  <div class="sash">
+    <span class="sash-badge">Special benefit</span>
+    <p class="sash-text">Part of every admission fee opens a <strong>personal bank account</strong> for you — because financial discipline is taught here, not just skills.</p>
+  </div>
+</div>
+
+<section class="why section" id="why">
+  <div class="wrap">
+    <span class="section-tag">Let's be honest</span>
+    <h2>Who else does this?</h2>
+    <p class="intro">Most colleges hand you a certificate and wish you luck. We build the enterprise, the capital, and the coaching around the certificate.</p>
+    <div class="why-grid">
+      <div class="why-card"><h3>Market-driven courses</h3><p>Built on real jobs in your area, not recycled theory from a textbook.</p></div>
+      <div class="why-card"><h3>Training around you</h3><p>Programmes aligned to your personal abilities — not a one-size-fits-all timetable.</p></div>
+      <div class="why-card"><h3>A clear enterprise from day one</h3><p>Every student is guided into a specific business choice before they even graduate.</p></div>
+      <div class="why-card"><h3>Start-up capital, activated early</h3><p>The capital system switches on immediately after admission, not after graduation.</p></div>
+      <div class="why-card"><h3>Real, hands-on learning</h3><p>Skills are drilled through live application, not just lecture notes.</p></div>
+      <div class="why-card"><h3>An itemised business plan</h3><p>Every graduate leaves with a real business plan and a real budget attached to it.</p></div>
+    </div>
+
+    <div class="benefits-strip" id="benefits">
+      <h4>Special student benefits</h4>
+      <div class="benefit"><span class="tick">✓</span> Discounted computer classes for all students</div>
+      <div class="benefit"><span class="tick">✓</span> Free business &amp; financial literacy classes</div>
+      <div class="benefit"><span class="tick">✓</span> Start-up capital &amp; savings culture</div>
+      <div class="benefit"><span class="tick">✓</span> Admission fees fund your personal bank account</div>
+      <div class="benefit"><span class="tick">✓</span> Weekly, pressure-free loan repayment</div>
+      <div class="benefit"><span class="tick">✓</span> Business coaches &amp; management tools on graduation</div>
+    </div>
+  </div>
+</section>
+
+<section class="courses section" id="courses">
+  <div class="wrap">
+    <span class="section-tag">Courses &amp; Fee Structure</span>
+    <h2>Pick a department, see every course and its fee.</h2>
+    <p class="intro">Tap a department below to view our courses outline</p>
+
+    <div class="tabs" id="tabs"></div>
+    <div id="panels"></div>
+
+    <div class="other-fees">
+      <div class="fee-chip"><span>Registration Fee</span><b>Ksh 2,000 (once)</b></div>
+      <div class="fee-chip"><span>Practical Materials</span><b>As per course</b></div>
+      <div class="fee-chip"><span>Certification</span><b>As applicable</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="spotlight section" id="spotlight">
+  <div class="wrap">
+    <span class="section-tag">Course Spotlight</span>
+    <h2>Two programs worth a closer look.</h2>
+    <p class="intro">Hands-on, in demand, and priced to get you earning fast.</p>
+    <div class="spotlight-grid">
+      <div class="spotlight-card">
+        <img src="images/spotlight-mobile-repair.jpg" alt="Mobile Phone Repair course">
+        <div class="spotlight-shade"></div>
+        <div class="spotlight-info">
+          <span class="new-badge">2 Months</span>
+          <h3>Mobile Phone Repair</h3>
+          <p>Screen, charging, motherboard &amp; networking solutions — Ksh 17,500</p>
+        </div>
+      </div>
+      <div class="spotlight-card">
+        <img src="images/spotlight-videography.jpg" alt="Videography and Photography course">
+        <div class="spotlight-shade"></div>
+        <div class="spotlight-info">
+          <span class="new-badge">Now Enrolling</span>
+          <h3>Videography &amp; Photography</h3>
+          <p>Our newest program — turn a camera into a career.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="training section" id="training">
+  <div class="wrap">
+    <span class="section-tag">Hands-On Training</span>
+    <h2>This is what learning by doing looks like.</h2>
+    <p class="intro">Real students, real tools, real practicals — every single week.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/training-baking.jpg" alt="Student practicing baking and pastry">
+        <div class="cap">Baking &amp; Pastry<span>Hospitality Dept.</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/training-electrical.jpg" alt="Student practicing electrical installation">
+        <div class="cap">Electrical Installation<span>Technical Dept.</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/training-nails.jpg" alt="Students practicing nail technology">
+        <div class="cap">Nail Technology<span>Beauty Dept.</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/training-nailart.jpg" alt="Finished nail art design">
+        <div class="cap">Nail Art Finish<span>Beauty Dept.</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/training-resin.jpg" alt="Students practicing resin art">
+        <div class="cap">Resin &amp; Epoxy Art<span>Business Dept.</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/training-computerlab.jpg" alt="Students in the computer lab">
+        <div class="cap">Computer Lab<span>ICT Dept.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="graduates section" id="graduates">
+  <div class="wrap">
+    <span class="section-tag">Success Stories</span>
+    <h2>Meet a few of our graduates.</h2>
+    <p class="intro">Certificate in hand, skill in the pocket, business plan on the way.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/grad-ibrahim.jpg" alt="Graduate Ibrahim Karanja Thuva holding certificate">
+        <div class="cap"><span>Mobile Phone Repair</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/grad-joel.jpg" alt="Graduate Joel Mwaniki Kiringa holding certificate">
+        <div class="cap"><span>Mobile Phone Repair</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/grad-handover-1.jpg" alt="Graduate receiving certificate">
+        <div class="cap">Certificate Handover<span>Class of 2026</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/grad-handover-2.jpg" alt="Director handing certificate to a graduate">
+        <div class="cap">Certificate Handover<span>Information Technology</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/grad-handover-3.jpg" alt="Graduate receiving certificate in front of ATTI college">
+        <div class="cap">Certificate Handover<span>Class of 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="director section" id="director">
+  <div class="wrap">
+    <span class="section-tag">A Word From Leadership</span>
+    <h2>Message from the Director</h2>
+    <div class="director-grid" style="margin-top:36px;">
+      <div class="director-photo-wrap">
+        <div class="director-photo">
+          <img src="images/director-photo.jpg" alt="Director, Annita Technical Training Institute">
+        </div>
+        <div class="director-tag">Director</div>
+      </div>
+      <div class="director-message">
+        <span class="director-quote-mark">&ldquo;</span>
+        <p>Every student who walks through our doors is walking away from a certificate mentality and into an enterprise mindset.</p>
+        <p>When we started Annita Technical Training Institute, the goal was never just to teach a skill and say goodbye. We wanted to build something one of a kind in Africa — a place where a young person from Kenol, or anywhere else, could learn a trade, open a bank account, receive start-up capital, and walk out with an actual business plan in hand. That is the promise we make to every learner who enrolls with us.</p>
+        <p>I meet our students at their level — whatever their background, whatever their pace — and I make sure our coaches and instructors do the same. Skills open doors, but it is discipline, saving culture, and real business support that keep those doors open long after graduation. That is what we are building here, one learner at a time.</p>
+        <div class="director-signoff">
+          <b>The Director</b>
+          <span>Annita Technical Training Institute</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <h2>Ready to enroll?</h2>
+    <p>Message us on WhatsApp with the course you want — we'll confirm intake dates and fee breakdown the same day.</p>
+    <a href="https://wa.me/254755336316" class="btn btn-gold">💬 WhatsApp 0755336316</a>
+  </div>
+</section>
+
+<section class="contact section" id="contact">
+  <div class="wrap">
+    <span class="section-tag">Get in touch</span>
+    <h2>Come see us, or reach out first.</h2>
+    <div class="contact-grid" style="margin-top:36px;">
+      <div class="contact-card">
+        <h3>Call or WhatsApp</h3>
+        <div class="phone">0722 866 363/0755336316</div>
+        <div class="contact-row"><span class="ic">📞</span> Fastest way to ask about intake dates</div>
+        <div class="contact-row"><span class="ic">💬</span> Send us the course name on WhatsApp</div>
+        <div class="contact-row"><span class="ic">🕒</span> We reply the same business day</div>
+      </div>
+      <div class="visit-card">
+        <h3>Visit the campus</h3>
+        <p>Silvercore Plaza, opposite Pizza Inn, above Biashara Sacco — first floor, Room No. 23, Kenol Town.</p>
+        <span class="badge-open">🔴 Admission Open</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Annita Technical Training Institute</strong> · Kenol Town, Murang'a County ·
+</footer>
+
+<script>
+const data = {
+  "Information Technology": [
+    ["Computer Packages", "2 Months", "Ksh 3,500"],
+    ["Graphic Design", "3 Months", "Ksh 20,000"],
+    ["Digital Marketing", "2 Months", "Ksh 17,000"],
+    ["QuickBooks (Computerized Accounting)", "2 Months", "Ksh 14,850"],
+    ["Programming", "3 Months", "Ksh 25,850"],
+    ["Programming", "6 Months", "Ksh 50,850"],
+  ],
+  "Hospitality & Hotel Management": [
+    ["Catering & Baking", "6 Months", "Ksh 32,000"],
+    ["Certificate in Hospitality Operations", "6 Months", "Ksh 37,000"],
+    ["Diploma in Hospitality Management", "1 Year", "Ksh 67,000"],
+    ["Food Production (Cookery) — NITA Grade 3 & 2", "—", "Ksh 27,000"],
+    ["Food Production (Cookery) — NITA Grade 2", "—", "Ksh 37,000"],
+    ["Baking & Pastry Production", "3 Months", "Ksh 27,000"],
+    ["Professional Chef Training", "1–3 Months", "Ksh 22,000"],
+    ["Housekeeping Operations", "2 Months", "Ksh 17,000"],
+    ["Front Office Operations", "2 Months", "Ksh 17,000"],
+    ["Food & Beverage Service", "2 Months", "Ksh 17,000"],
+    ["Barista & Coffee Shop Management", "1 Month", "Ksh 12,000"],
+    ["Event Management & Catering", "2 Months", "Ksh 22,000"],
+    ["Caregiving", "3 Months", "Ksh 22,850"],
+    ["Homecare", "3 Months", "Ksh 22,850"],
+    ["Barista Skills & Coffee Brewing", "1–2 Months", "Ksh 12,850"],
+  ],
+  "Beauty & Cosmetology": [
+    ["Beauty Therapy (Certificate)", "6 Months", "Ksh 32,000"],
+    ["Hairdressing & Hair Technology", "6 Months", "Ksh 32,000"],
+    ["Nail Technology", "1 Month", "Ksh 17,000"],
+    ["Make-Up Artistry", "1 Month", "Ksh 17,000"],
+    ["Barbering", "3 Months", "Ksh 22,000"],
+    ["Cosmetology (Advanced)", "9 Months", "Ksh 47,000"],
+    ["Massage Therapy", "2 Months", "Ksh 22,000"],
+    ["Eyelash & Brow Technology", "1 Month", "Ksh 17,850"],
+    ["Professional Dreadlocks", "—", "Ksh 17,000 – 32,000"],
+  ],
+  "Technical & Construction": [
+    ["Electrical Installation", "6 Months", "Ksh 32,000"],
+    ["Mobile Phone Repair", "2 Months", "Ksh 17,500"],
+    ["Plumbing", "6 Months", "Ksh 30,000"],
+    ["Carpentry", "6 Months", "Ksh 30,000"],
+    ["Masonry", "6 Months", "Ksh 27,000"],
+    ["Professional Painting", "3 Months", "Ksh 27,000"],
+  ],
+  "Fashion": [
+    ["Tailoring / Fashion Design", "6 Months", "Ksh 27,000"],
+  ],
+  "Business & Agribusiness": [
+    ["Poultry Farming", "1 Month", "Ksh 12,000"],
+    ["Book Keeping", "1–3 Months", "Ksh 12,000 – 17,000"],
+    ["Resin Art Only", "1 Month", "Ksh 17,000"],
+    ["Full Resin & Epoxy Course", "1 Month", "Ksh 32,000"],
+    ["Real Estate Management", "2 Months", "Ksh 26,850"],
+  ],
+};
+
+const tabsEl = document.getElementById('tabs');
+const panelsEl = document.getElementById('panels');
+const deptNames = Object.keys(data);
+
+deptNames.forEach((name, i) => {
+  const tab = document.createElement('button');
+  tab.className = 'tab' + (i === 0 ? ' active' : '');
+  tab.textContent = name;
+  tab.onclick = () => selectTab(i);
+  tabsEl.appendChild(tab);
+
+  const panel = document.createElement('div');
+  panel.className = 'course-panel' + (i === 0 ? ' active' : '');
+  const table = document.createElement('table');
+  table.className = 'course-table';
+  data[name].forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${row[0]}</td><td class="dur">${row[1]}</td><td class="fee">${row[2]}</td>`;
+    table.appendChild(tr);
+  });
+  panel.appendChild(table);
+  panelsEl.appendChild(panel);
+});
+
+function selectTab(idx){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.course-panel').forEach((p,i)=>p.classList.toggle('active', i===idx));
+}
+
+/* ===== CAMPUS CAROUSEL ===== */
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.carousel-dots .dot');
+let current = 0;
+let carouselTimer;
+
+function goToSlide(i){
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = i;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+
+function nextSlide(){
+  goToSlide((current + 1) % slides.length);
+}
+
+function startCarousel(){
+  carouselTimer = setInterval(nextSlide, 4000);
+}
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    clearInterval(carouselTimer);
+    goToSlide(parseInt(dot.dataset.i));
+    startCarousel();
+  });
+});
+
+startCarousel();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Loops</title>
+</head>
+<body>
+
+<h3>Even numbers from 90 down to 70</h3>
+<?php
+for ($i = 90; $i >= 70; $i -= 2) {
+    echo $i . ", ";
+}
+?>
+
+<h3>Number Series</h3>
+<?php
+for ($i = 150; $i <= 750; $i += 50) {
+    echo $i . ", ";
+}
+?>
+
+<h3>Sum of Numbers from 10 to 20</h3>
+<?php
+$sum = 0;
+for ($i = 10; $i <= 20; $i++) {
+    $sum += $i;
+    echo $i;
+    if ($i < 20) echo " + ";
+}
+echo " = $sum";
+?>
+
+<h3>Product of Numbers from 30 to 35</h3>
+<?php
+$product = 1;
+for ($i = 30; $i <= 35; $i++) {
+    $product *= $i;
+    echo $i;
+    if ($i < 35) echo " x ";
+}
+echo " = $product";
+?>
+
+<h3>Nested Loop Pattern 1</h3>
+<?php
+for ($i = 1; $i <= 4; $i++) {
+    for ($j = 1; $j <= 4; $j++) {
+        echo "s ";
+    }
+    echo "<br>";
+}
+?>
+
+<h3>Nested Loop Pattern 2</h3>
+<?php
+for ($i = 1; $i <= 4; $i++) {
+    for ($j = 1; $j <= $i; $j++) {
+        echo "s ";
+    }
+    echo "<br>";
+}
+?>
+
+<h3>Nested Loop Pattern 3</h3>
+<?php
+for ($i = 4; $i >= 1; $i--) {
+    for ($j = 1; $j <= $i; $j++) {
+        echo "s ";
+    }
+    echo "<br>";
+}
+?>
+
+<br>
+<a href="index.php">Go to Home Page</a>
+
+</body>
+</html>

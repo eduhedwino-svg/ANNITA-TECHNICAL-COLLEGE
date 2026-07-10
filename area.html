@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Area</title>
+</head>
+<body>
+
+<h2>Enter the radius of a circle</h2>
+
+<form method="POST">
+    <input type="number" name="radius" required>
+    <br><br>
+    <input type="submit" name="calc" value="Calculate">
+</form>
+
+<?php
+define("PI", 3.142);
+
+if (isset($_POST['calc'])) {
+    $r = $_POST['radius'];
+    $area = PI * $r * $r;
+
+    echo "<p>The Area of a Circle with radius of $r cm is:</p>";
+    echo "<strong>$area cm<sup>2</sup></strong>";
+}
+?>
+
+<br><br>
+<a href="index.php">Go to Home Page</a>
+
+</body>
+</html>
